@@ -10,15 +10,22 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.get('/', function(req,res){
-  res.sendFile(path.join(__dirname, '/public/index.html'))
+  res.sendFile(path.join(__dirname, '/index.html'))
 })
 app.get('/notes', function(req,res){
-  res.sendFile(path.join(__dirname, '/public/notes.html'))
+  res.sendFile(path.join(__dirname, '/notes.html'))
 })
 
 app.get('*', function(req,res){
-  res.sendFile(path.join(__dirname, '/public/index.html'))
+  res.sendFile(path.join(__dirname, '/index.html'))
 })
 app.listen(PORT, ()=>{
   console.log(`listeing at http://localhost:${PORT}`)
+})
+
+app.post('api/notes', function(req, res){
+  const notes = req.body
+  console.log(notes)
+  const text = req.body.text;
+ 
 })
